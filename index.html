@@ -67,6 +67,17 @@
       box-shadow: 0 0 12px #00f2ff99;
     }
 
+    /* Remove spinner arrows for number input */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
     .neon-btn {
       background-color: transparent;
       border: 2px solid #0ff;
@@ -95,8 +106,8 @@
           <div class="card-body space-y-4 z-10">
             <h1 class="text-3xl font-bold text-center text-white">Login Now</h1>
 
-            <label class="text-white text-sm font-semibold">Email</label>
-            <input type="email" class="input glass-input" placeholder="Enter your email" />
+            <label class="text-white text-sm font-semibold">Phone Number</label>
+            <input type="number" class="input glass-input" placeholder="Enter your Phone Number" />
 
             <label class="text-white text-sm font-semibold">Password</label>
             <input type="password" class="input glass-input" placeholder="Enter your password" />
