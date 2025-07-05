@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glass Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.15/dist/full.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Abstract colorful blurred shape */
+    .bg-shape {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at center, #0ff, #f0f, #00f);
+      filter: blur(100px);
+      opacity: 0.4;
+      border-radius: 50%;
+      animation: move 10s infinite alternate;
+    }
+
+    .bg-shape.one {
+      top: 10%;
+      left: 10%;
+    }
+
+    .bg-shape.two {
+      bottom: 10%;
+      right: 15%;
+    }
+
+    @keyframes move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(20px, 30px); }
+    }
+
+    .glass-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+      z-index: 10;
+    }
+
+    .glass-input {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .glass-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .glass-input:focus {
+      border-color: #00f2ff;
+      box-shadow: 0 0 12px #00f2ff99;
+    }
+
+    .neon-btn {
+      background-color: transparent;
+      border: 2px solid #0ff;
+      color: #0ff;
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
+
+    .neon-btn:hover {
+      background-color: #0ff;
+      color: #000;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+
+  <!-- Colorful BG Shapes -->
+  <div class="bg-shape one"></div>
+  <div class="bg-shape two"></div>
+
+  <main>
+    <div class="hero min-h-screen z-10">
+      <div class="hero-content flex-col gap-10">
+        <div class="card glass-card w-full max-w-sm p-6 rounded-2xl">
+          <div class="card-body space-y-4 z-10">
+            <h1 class="text-3xl font-bold text-center text-white">Login Now</h1>
+
+            <label class="text-white text-sm font-semibold">Email</label>
+            <input type="email" class="input glass-input" placeholder="Enter your email" />
+
+            <label class="text-white text-sm font-semibold">Password</label>
+            <input type="password" class="input glass-input" placeholder="Enter your password" />
+
+            <div><a class="link link-hover text-cyan-300 text-sm">Forgot password?</a></div>
+
+            <button class="btn neon-btn w-full mt-4">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
