@@ -8,6 +8,9 @@ document.getElementById('button-login').addEventListener('click', function(event
   if(phnNumber ==='019' && password=== '1234'){
     console.log('logged in');
   window.location.href = '/home.html'
+  window.location.href = 'pages/home.html';
+
+  // window.location.href = '/https://mehedihasanshohan.github.io/payoo-mobile-bank-js/home.html'
 
   }
   else{
