@@ -3,47 +3,57 @@ const addMoneyForm = document.getElementById('add-money-form');
 const cashOutBtn = document.getElementById('cash-out-btn');
 const cashOutForm = document.getElementById('cash-out-form');
 
+const initialBalanceElement = document.getElementById('initial-balance');
 
-// make form visible by remove its hidden class
-addMoneyBtn.addEventListener('click', function(){
+// Toggle between forms
+addMoneyBtn.addEventListener('click', function () {
   addMoneyForm.classList.remove('hidden');
   cashOutForm.classList.add('hidden');
-})
+});
 
-
-// make form visible by remove its hidden class
-cashOutBtn.addEventListener('click', function(){
+cashOutBtn.addEventListener('click', function () {
   cashOutForm.classList.remove('hidden');
   addMoneyForm.classList.add('hidden');
-})
+});
 
-
-
-const initialBalanceElement = document.getElementById('initial-balance');
-const initialBalance = Number(initialBalanceElement.innerHTML);
-
+// Add money
 document.getElementById('add-money-btn').addEventListener('click', function () {
-  const addMoneyQuantityStringInput = document.getElementById('str-amount');
-  const addMoneyQuantityString = addMoneyQuantityStringInput.value;
-  const addMoneyQuantity = Number(addMoneyQuantityString);
+  const addMoneyInput = document.getElementById('str-amount');
+  const addMoneyValue = parseFloat(addMoneyInput.value);
+
   const pinInput = document.getElementById('pin');
   const pin = pinInput.value;
-  console.log(pin, addMoneyQuantity, typeof(addMoneyQuantity));
 
-  if(pin=== '1234' && addMoneyQuantity>0){
-    const currentBalance = initialBalance + addMoneyQuantity ;
-    initialBalanceElement.innerHTML = currentBalance;
+  let currentBalance = parseFloat(initialBalanceElement.innerText);
 
-    //  clear inputs
-    pinInput.value='';
-    addMoneyQuantityStringInput.value='';
-  }
-  else{
-    alert('wrong pin or amount');
-    //  clear inputs
-    pinInput.value='';
-    addMoneyQuantityStringInput.value='';
+  if (pin === '1234' && addMoneyValue > 0) {
+    currentBalance += addMoneyValue;
+    initialBalanceElement.innerText = currentBalance.toFixed(2);
+  } else {
+    alert('Wrong PIN or invalid amount');
   }
 
+  pinInput.value = '';
+  addMoneyInput.value = '';
+});
 
+// Cash out
+document.getElementById('cash-out-btn-2').addEventListener('click', function () {
+  const cashOutInput = document.getElementById('str-amount-2');
+  const cashOutValue = parseFloat(cashOutInput.value);
+
+  const pinInput = document.getElementById('pin-2'); 
+  const pin = pinInput.value;
+
+  let currentBalance = parseFloat(initialBalanceElement.innerText);
+
+  if (pin === '1234' && cashOutValue > 0 && cashOutValue <= currentBalance) {
+    currentBalance -= cashOutValue;
+    initialBalanceElement.innerText = currentBalance.toFixed(2);
+  } else {
+    alert('Wrong PIN, invalid amount, or insufficient funds');
+  }
+
+  pinInput.value = '';
+  cashOutInput.value = '';
 });
