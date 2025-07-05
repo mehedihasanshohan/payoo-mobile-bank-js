@@ -1,3 +1,12 @@
+const addMoneyBtn = document.getElementById('add-money-btn-1');
+const addMoneyForm = document.getElementById('add-money-form');
+
+addMoneyBtn.addEventListener('click', function(){
+  addMoneyForm.classList.remove('hidden');
+})
+
+
+
 const initialBalanceElement = document.getElementById('initial-balance');
 const initialBalance = Number(initialBalanceElement.innerHTML);
 
