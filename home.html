@@ -23,7 +23,7 @@
     <!-- user actions button -->
      <div class="flex justify-center gap-4">
       <button id="add-money-btn-1" class="btn btn-lg">Add Money</button>
-      <button class="btn btn-lg">Cash Out</button>
+      <button id="cash-out-btn" class="btn btn-lg">Cash Out</button>
      </div>
 
      <div class="divider"></div>
@@ -44,6 +44,23 @@
       </div>
     </div>
     <!-- add money form ends  -->
+
+     <!-- cash out form starts -->
+    <div id="cash-out-form" class="hidden flex items-center justify-center bg-[url('https://source.unsplash.com/featured/?nature')] bg-cover bg-center ">
+      <div class="card bg-white/10 backdrop-blur-md w-full max-w-sm shadow-2xl border border-white/20">
+        <div class="card-body space-y-4">
+          <h2 class="text-2xl font-bold text-center text-white">Cash Out</h2>
+          <fieldset class="space-y-3">
+            <label class="label text-white">Amount (৳)</label>
+              <input id="str-amount" type="text" class="input input-bordered w-full" placeholder="Enter amount" />
+            <label class="label text-white">PIN</label>
+              <input id="pin" type="password" class="input input-bordered w-full" maxlength="4" placeholder="4-digit PIN" />
+            <button id="add-money-btn" class="btn btn-success w-full">Cash Out</button>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <!-- cash out form ends  -->
 
   </main>
 

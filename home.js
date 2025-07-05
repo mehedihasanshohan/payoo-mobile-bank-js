@@ -1,8 +1,20 @@
 const addMoneyBtn = document.getElementById('add-money-btn-1');
 const addMoneyForm = document.getElementById('add-money-form');
+const cashOutBtn = document.getElementById('cash-out-btn');
+const cashOutForm = document.getElementById('cash-out-form');
 
+
+// make form visible by remove its hidden class
 addMoneyBtn.addEventListener('click', function(){
   addMoneyForm.classList.remove('hidden');
+  cashOutForm.classList.add('hidden');
+})
+
+
+// make form visible by remove its hidden class
+cashOutBtn.addEventListener('click', function(){
+  cashOutForm.classList.remove('hidden');
+  addMoneyForm.classList.add('hidden');
 })
 
 
