@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.15/dist/full.min.css" rel="stylesheet" />
+</head>
+<body>
+  <main class="">
+    <div class="flex justify-center">
+      <div class="stats shadow">
+        <div class="stat">
+          <div class="stat-value">9400</div>
+          <div class="stat-desc">Available Balance</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- user actions button -->
+     <div class="flex justify-center gap-4">
+      <button class="btn btn-lg">Add Money</button>
+      <button class="btn btn-lg">Cash Out</button>
+     </div>
+
+     <div class="divider"></div>
+
+     <!-- add money form -->
+    <div class=" flex items-center justify-center bg-[url('https://source.unsplash.com/featured/?nature')] bg-cover bg-center ">
+      <div class="card bg-white/10 backdrop-blur-md w-full max-w-sm shadow-2xl border border-white/20">
+        <div class="card-body space-y-4">
+          <h2 class="text-2xl font-bold text-center text-white">Add Money</h2>
+          <fieldset class="space-y-3">
+            <label class="label text-white">Amount (৳)</label>
+            <input type="text" class="input input-bordered w-full" placeholder="Enter amount" />
+            <label class="label text-white">PIN</label>
+            <input type="password" class="input input-bordered w-full" maxlength="4" placeholder="4-digit PIN" />
+            <button class="btn btn-success w-full">Add Money</button>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <!-- add money form ends  -->
+
+  </main>
+
+  <script src="/home.js"></script>
+</body>
+</html>
