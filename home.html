@@ -12,7 +12,7 @@
     <div class="flex justify-center">
       <div class="stats shadow">
         <div class="stat">
-          <div id="initial-balance" class="stat-value text-pink-300 border p-2 mb-2">9400</div>
+          <div id="initial-balance" class="stat-value rounded-lg text-pink-300 border p-2 mb-2">9400</div>
           <div class="stat-desc">Available Balance</div>
         </div>
       </div>
@@ -25,6 +25,7 @@
       <button id="add-money-btn-1" class="btn btn-lg btn-primary">Add Money</button>
       <button id="cash-out-btn" class="btn btn-lg btn-secondary">Cash Out</button>
       <button id="recharge-btn" class="btn btn-lg btn-info">Mobile Reacharge</button>
+      <button id="utils-btn" class="btn btn-lg btn-accent">Utility Bills</button>
      </div>
 
      <div class="divider"></div>
@@ -100,9 +101,33 @@
           </div>
         </div>
       </div>
- <!-- recharge form ends  -->
+     <!-- recharge form ends  -->
 
-
+     <!-- operator selectors start here  -->
+      <div id="utils-section" class="grid grid-cols-2 gap-4 max-w-md mx-auto hidden">
+        <div class="card bg-blue-500 text-white cursor-pointer" data-operator="gp">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">🔥 Gas Bill</h2>
+          </div>
+        </div>
+        <div class="card bg-red-500 text-white cursor-pointer" data-operator="robi">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">⚡ Current Bill</h2>
+          </div>
+        </div>
+        <div class="card bg-yellow-400 text-black cursor-pointer" data-operator="bl">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">💧 Water Bill</h2>
+          </div>
+        </div>
+        <div class="card bg-green-600 text-white cursor-pointer" data-operator="teletalk">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">🌐 Internet Bill</h2>
+          </div>
+        </div>
+      </div>
+    <!-- orerator selectors ends -->
+      <!-- operators selector ends here -->
 
 
   </main>
