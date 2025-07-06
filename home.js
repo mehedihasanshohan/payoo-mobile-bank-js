@@ -220,7 +220,34 @@ confirmBtn.addEventListener('click', function () {
         const remainingBalance = initialBalance - billAmount;
         initialBalanceElement.innerText = remainingBalance;
 
-         // Clear input fields 
+
+        // transaction section starts
+        const transactionList = document.getElementById('transaction-history-list');
+
+        // Create a list item
+        const listItem = document.createElement('li');
+        listItem.className = 'bg-base-200 p-3 rounded-lg shadow-md flex justify-between items-center';
+
+        // Format time
+        const now = new Date();
+        const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        // Set item content
+        listItem.innerHTML = `
+          <div>
+            <p class="text-sm text-gray-400">${time}</p>
+            <p><span class="font-semibold">Bill ID:</span> ${billId}</p>
+          </div>
+          <div class="text-right">
+            <p class="text-green-500 font-bold">-৳${billAmount}</p>
+          </div>
+        `;
+
+        // Add to history
+        transactionList.prepend(listItem); // newest on top
+        // transaction section ends here
+
+         // Clear input fields
         billIdEl.value = '';
         billAmountEl.value = '';
         billPinEl.value = '';
@@ -237,3 +264,6 @@ confirmBtn.addEventListener('click', function () {
 
   });
 // utility section ends here
+
+
+
