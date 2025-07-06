@@ -4,15 +4,31 @@ const cashOutBtn = document.getElementById('cash-out-btn');
 const cashOutForm = document.getElementById('cash-out-form');
 const operatorSection = document.getElementById('operator-section');
 const rechargeFormSection = document.getElementById('recharge-form-section');
-
+const rechargeBtn = document.getElementById('recharge-btn');
 const initialBalanceElement = document.getElementById('initial-balance');
 
-// Toggle between forms
-addMoneyBtn.addEventListener('click', function () {
-  addMoneyForm.classList.remove('hidden');
+// hide all section
+function hideAllSections() {
+  addMoneyForm.classList.add('hidden');
   cashOutForm.classList.add('hidden');
   rechargeFormSection.classList.add('hidden');
+  operatorSection.classList.add('hidden');
+}
+
+// Toggle between forms starts here
+addMoneyBtn.addEventListener('click', function () {
+  hideAllSections();
+  addMoneyForm.classList.remove('hidden')
 });
+cashOutBtn.addEventListener('click', function () {
+  hideAllSections();
+  cashOutForm.classList.remove('hidden')
+});
+rechargeBtn.addEventListener('click', function () {
+  hideAllSections();
+  operatorSection.classList.remove('hidden')
+});
+// toggle between forms ends here
 
 cashOutBtn.addEventListener('click', function () {
   cashOutForm.classList.remove('hidden');
