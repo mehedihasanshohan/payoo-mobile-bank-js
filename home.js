@@ -198,6 +198,8 @@ confirmBtn.addEventListener('click', function () {
     const billId = billIdEl.value;
     const billAmount = parseFloat(billAmountEl.value);
     const pin = billPinEl.value;
+    const initialBalance = parseFloat(initialBalanceElement.innerText); // 💡 get fresh balance
+
 
     if (billId === '') {
       alert("❌ Bill ID is required.");
@@ -213,27 +215,15 @@ confirmBtn.addEventListener('click', function () {
     }
 
 
-    // if (pin === '1234') {
-    //   billIdInput.value = '';
-    //   amountInput.value = '';
-    //   pinInput.value = '';
-    //   utilityForm.classList.add('hidden');
-    //   billSuccessMsg.classList.remove('hidden');
-    //   initialBalance.innerText = initialBalance - billAmount;
-    // } else {
-    //   alert("❌ Wrong PIN. Please try again.");
-    // }
-
-
-    // inside payment success block:
     if (pin === '1234') {
       if (initialBalance >= billAmount) {
         const remainingBalance = initialBalance - billAmount;
         initialBalanceElement.innerText = remainingBalance;
 
-        billIdInput.value = '';
-        amountInput.value = '';
-        pinInput.value = '';
+         // Clear input fields 
+        billIdEl.value = '';
+        billAmountEl.value = '';
+        billPinEl.value = '';
         utilityForm.classList.add('hidden');
         billSuccessMsg.classList.remove('hidden');
 
@@ -242,9 +232,8 @@ confirmBtn.addEventListener('click', function () {
         }, 3000);
       } else {
         alert("❌ Not enough balance!");
-        console.log(initialBalance, billAmount);
-
       }
     }
 
   });
+// utility section ends here
