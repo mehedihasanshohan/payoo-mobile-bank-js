@@ -6,16 +6,18 @@ const operatorSection = document.getElementById('operator-section');
 const rechargeFormSection = document.getElementById('recharge-form-section');
 const rechargeBtn = document.getElementById('recharge-btn');
 const utilsBtn = document.getElementById('utils-btn');
-//  utility section
 const utilsSection = document.getElementById('utils-section');
 const utilityCards = utilsSection.querySelectorAll('.card');
 const utilityForm = document.getElementById('utility-form-section');
 const billIdInput = document.getElementById('mobile-number');
 const amountInput = document.getElementById('recharge-amount');
 const pinInput = document.getElementById('recharge-pin');
-const billConfirmBtn = document.getElementById('bill-confirm-btn');
-
 const initialBalanceElement = document.getElementById('initial-balance');
+const billIdEl = document.getElementById('bill-id');
+const billAmountEl = document.getElementById('bill-amount');
+const billPinEl = document.getElementById('bill-pin');
+const billConfirmBtnEl = document.getElementById('bill-confirm-btn');
+const billSuccessMsg = document.getElementById('bill-success-msg');
 
 // hide all section
 function hideAllSections() {
@@ -25,7 +27,9 @@ function hideAllSections() {
   operatorSection.classList.add('hidden');
   utilsSection.classList.add('hidden');
   utilityForm.classList.add('hidden');
+  billSuccessMsg.classList.add('hidden');
 }
+
 
 // Toggle between forms starts here
 addMoneyBtn.addEventListener('click', function () {
@@ -135,7 +139,7 @@ confirmBtn.addEventListener('click', function () {
     teletalk: '015'
   };
 
-  // ✅ Validations
+  //  Validations
   if (!selectedOperator) {
     alert("Please select an operator.");
     return;
@@ -187,22 +191,32 @@ confirmBtn.addEventListener('click', function () {
   });
 
   // Validate and show success/failure
-  confirmBtn.addEventListener('click', () => {
-    const billId = billIdInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-    const pin = pinInput.value.trim();
+  billConfirmBtnEl.addEventListener('click', () => {
 
-    if (billId === '' || isNaN(amount) || amount <= 0 || pin === '') {
-      alert("❌ Please fill out all fields correctly.");
+    const billId = billIdEl.value;
+    const amount = parseFloat(billAmountEl.value);
+    const pin = billPinEl.value;
+
+    if (billId === '') {
+      alert("❌ Bill ID is required.");
+      return;
+    }
+    if (isNaN(amount) || amount <= 0) {
+      alert("❌ Please enter a valid amount.");
+      return;
+    }
+    if (pin === '') {
+      alert("❌ PIN is required.");
       return;
     }
 
+
     if (pin === '1234') {
-      alert("✅ Bill paid successfully!");
       billIdInput.value = '';
       amountInput.value = '';
       pinInput.value = '';
       utilityForm.classList.add('hidden');
+      billSuccessMsg.classList.remove('hidden');
     } else {
       alert("❌ Wrong PIN. Please try again.");
     }

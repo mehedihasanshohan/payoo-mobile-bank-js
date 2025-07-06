@@ -5,7 +5,7 @@ document.getElementById('button-login').addEventListener('click', function(event
   const password = document.getElementById('password').value;
   console.log(phnNumber,  password);
 
-  if(phnNumber ==='019' && password=== '1234'){
+  if(phnNumber ==='2323' && password=== '1234'){
     console.log('logged in');
   // window.location.href = '/home.html'
   window.location.href = 'home.html';
