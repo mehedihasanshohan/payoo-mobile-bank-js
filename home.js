@@ -3,6 +3,7 @@ const addMoneyForm = document.getElementById('add-money-form');
 const cashOutBtn = document.getElementById('cash-out-btn');
 const cashOutForm = document.getElementById('cash-out-form');
 const operatorSection = document.getElementById('operator-section');
+const rechargeFormSection = document.getElementById('recharge-form-section');
 
 const initialBalanceElement = document.getElementById('initial-balance');
 
@@ -10,6 +11,7 @@ const initialBalanceElement = document.getElementById('initial-balance');
 addMoneyBtn.addEventListener('click', function () {
   addMoneyForm.classList.remove('hidden');
   cashOutForm.classList.add('hidden');
+  rechargeFormSection.classList.add('hidden');
 });
 
 cashOutBtn.addEventListener('click', function () {
@@ -21,7 +23,6 @@ cashOutBtn.addEventListener('click', function () {
 document.getElementById('add-money-btn').addEventListener('click', function () {
   const addMoneyInput = document.getElementById('str-amount');
   const addMoneyValue = parseFloat(addMoneyInput.value);
-
   const pinInput = document.getElementById('pin');
   const pin = pinInput.value;
 
@@ -68,7 +69,6 @@ document.getElementById('recharge-btn').addEventListener('click', function(){
 let selectedOperator = null;
 
 const operatorCards = document.querySelectorAll('[data-operator]');
-const rechargeFormSection = document.getElementById('recharge-form-section');
 
 operatorCards.forEach(card => {
   card.addEventListener('click', () => {
@@ -84,4 +84,61 @@ operatorCards.forEach(card => {
     // Show recharge form
     rechargeFormSection.classList.remove('hidden');
   });
+});
+
+
+
+const confirmBtn = document.getElementById('recharge-confirm-btn');
+const balanceElement = document.getElementById('initial-balance');
+
+confirmBtn.addEventListener('click', function () {
+  const mobile = document.getElementById('mobile-number').value.trim();
+  const amount = parseFloat(document.getElementById('recharge-amount').value);
+  const pin = document.getElementById('recharge-pin').value;
+
+  const currentBalance = parseFloat(balanceElement.innerText);
+
+  // Operator prefix rules
+  const operatorPrefixes = {
+    gp: '017',
+    robi: '018',
+    bl: '019',
+    teletalk: '015'
+  };
+
+  // ✅ Validations
+  if (!selectedOperator) {
+    alert("Please select an operator.");
+    return;
+  }
+
+  if (!mobile.startsWith(operatorPrefixes[selectedOperator])) {
+    alert(`Mobile number must start with ${operatorPrefixes[selectedOperator]} for ${selectedOperator.toUpperCase()}.`);
+    return;
+  }
+
+  if (pin !== '1234') {
+    alert("Invalid PIN.");
+    return;
+  }
+
+  if (isNaN(amount) || amount <= 0) {
+    alert("Enter a valid amount.");
+    return;
+  }
+
+  if (amount > currentBalance) {
+    alert("Insufficient balance.");
+    return;
+  }
+
+  // recharge success and update initial balance
+  const newBalance = currentBalance - amount;
+  initialBalanceElement.innerText = newBalance.toFixed(2);
+  alert(`Recharge successful to ${mobile} of ৳${amount}`);
+
+  // Reset form
+  document.getElementById('mobile-number').value = '';
+  document.getElementById('recharge-amount').value = '';
+  document.getElementById('recharge-pin').value = '';
 });
