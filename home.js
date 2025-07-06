@@ -64,3 +64,24 @@ document.getElementById('cash-out-btn-2').addEventListener('click', function () 
 document.getElementById('recharge-btn').addEventListener('click', function(){
   operatorSection.classList.remove('hidden');
 })
+
+let selectedOperator = null;
+
+const operatorCards = document.querySelectorAll('[data-operator]');
+const rechargeFormSection = document.getElementById('recharge-form-section');
+
+operatorCards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Store selected operator
+    selectedOperator = card.getAttribute('data-operator');
+
+    // Remove highlight from all cards
+    operatorCards.forEach(c => c.classList.remove('ring-4', 'ring-white', 'scale-105'));
+    operatorSection.classList.add('hidden');
+    // Highlight selected card
+    card.classList.add('ring-4', 'ring-white', 'scale-105');
+
+    // Show recharge form
+    rechargeFormSection.classList.remove('hidden');
+  });
+});
