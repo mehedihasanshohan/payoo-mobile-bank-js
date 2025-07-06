@@ -6,7 +6,15 @@ const operatorSection = document.getElementById('operator-section');
 const rechargeFormSection = document.getElementById('recharge-form-section');
 const rechargeBtn = document.getElementById('recharge-btn');
 const utilsBtn = document.getElementById('utils-btn');
+//  utility section
 const utilsSection = document.getElementById('utils-section');
+const utilityCards = utilsSection.querySelectorAll('.card');
+const utilityForm = document.getElementById('utility-form-section');
+const billIdInput = document.getElementById('mobile-number');
+const amountInput = document.getElementById('recharge-amount');
+const pinInput = document.getElementById('recharge-pin');
+const billConfirmBtn = document.getElementById('bill-confirm-btn');
+
 const initialBalanceElement = document.getElementById('initial-balance');
 
 // hide all section
@@ -16,6 +24,7 @@ function hideAllSections() {
   rechargeFormSection.classList.add('hidden');
   operatorSection.classList.add('hidden');
   utilsSection.classList.add('hidden');
+  utilityForm.classList.add('hidden');
 }
 
 // Toggle between forms starts here
@@ -162,3 +171,39 @@ confirmBtn.addEventListener('click', function () {
   document.getElementById('recharge-amount').value = '';
   document.getElementById('recharge-pin').value = '';
 });
+
+
+
+
+
+// utility section starts
+
+  // Show form when any card is clicked
+  utilityCards.forEach(card => {
+    card.addEventListener('click', () => {
+      hideAllSections();
+      utilityForm.classList.remove('hidden');
+    });
+  });
+
+  // Validate and show success/failure
+  confirmBtn.addEventListener('click', () => {
+    const billId = billIdInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+    const pin = pinInput.value.trim();
+
+    if (billId === '' || isNaN(amount) || amount <= 0 || pin === '') {
+      alert("❌ Please fill out all fields correctly.");
+      return;
+    }
+
+    if (pin === '1234') {
+      alert("✅ Bill paid successfully!");
+      billIdInput.value = '';
+      amountInput.value = '';
+      pinInput.value = '';
+      utilityForm.classList.add('hidden');
+    } else {
+      alert("❌ Wrong PIN. Please try again.");
+    }
+  });

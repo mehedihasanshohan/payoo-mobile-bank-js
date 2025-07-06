@@ -103,31 +103,44 @@
       </div>
      <!-- recharge form ends  -->
 
-     <!-- operator selectors start here  -->
+     <!-- utility selectors start here  -->
       <div id="utils-section" class="grid grid-cols-2 gap-4 max-w-md mx-auto hidden">
-        <div class="card bg-blue-500 text-white cursor-pointer" data-operator="gp">
+        <div class="card bg-blue-500 text-white cursor-pointer">
           <div class="card-body items-center text-center">
             <h2 class="card-title">🔥 Gas Bill</h2>
           </div>
         </div>
-        <div class="card bg-red-500 text-white cursor-pointer" data-operator="robi">
+        <div class="card bg-red-500 text-white cursor-pointer">
           <div class="card-body items-center text-center">
             <h2 class="card-title">⚡ Current Bill</h2>
           </div>
         </div>
-        <div class="card bg-yellow-400 text-black cursor-pointer" data-operator="bl">
+        <div class="card bg-yellow-400 text-black cursor-pointer">
           <div class="card-body items-center text-center">
             <h2 class="card-title">💧 Water Bill</h2>
           </div>
         </div>
-        <div class="card bg-green-600 text-white cursor-pointer" data-operator="teletalk">
+        <div class="card bg-green-600 text-white cursor-pointer">
           <div class="card-body items-center text-center">
             <h2 class="card-title">🌐 Internet Bill</h2>
           </div>
         </div>
       </div>
-    <!-- orerator selectors ends -->
-      <!-- operators selector ends here -->
+      <!-- utility selector ends here -->
+
+       <!-- utility form starts -->
+      <div id="utility-form-section" class="max-w-md mx-auto mt-6 ">
+        <div class="card bg-base-200 shadow-xl">
+          <div class="card-body">
+            <h2 class="card-title">Utility Bills Form</h2>
+            <input id="mobile-number" type="text" placeholder="Bill id" class="input input-bordered w-full mb-3" />
+            <input id="recharge-amount" type="number" placeholder="Amount" class="input input-bordered w-full mb-3" />
+            <input id="recharge-pin" type="password" placeholder="PIN" class="input input-bordered w-full mb-3" />
+            <button id="bill-confirm-btn" class="btn btn-success w-full">Payment</button>
+          </div>
+        </div>
+      </div>
+     <!-- utility form ends  -->
 
 
   </main>
