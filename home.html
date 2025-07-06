@@ -12,7 +12,7 @@
     <div class="flex justify-center">
       <div class="stats shadow">
         <div class="stat">
-          <div id="initial-balance" class="stat-value">9400</div>
+          <div id="initial-balance" class="stat-value text-pink-300 border p-2 mb-2">9400</div>
           <div class="stat-desc">Available Balance</div>
         </div>
       </div>
@@ -22,8 +22,9 @@
 
     <!-- user actions button -->
      <div class="flex justify-center gap-4">
-      <button id="add-money-btn-1" class="btn btn-lg">Add Money</button>
-      <button id="cash-out-btn" class="btn btn-lg">Cash Out</button>
+      <button id="add-money-btn-1" class="btn btn-lg btn-primary">Add Money</button>
+      <button id="cash-out-btn" class="btn btn-lg btn-secondary">Cash Out</button>
+      <button id="recharge-btn" class="btn btn-lg btn-info">Mobile Reacharge</button>
      </div>
 
      <div class="divider"></div>
@@ -35,9 +36,9 @@
           <h2 class="text-2xl font-bold text-center text-white">Add Money</h2>
           <fieldset class="space-y-3">
             <label class="label text-white">Amount (৳)</label>
-              <input id="str-amount" type="text" class="input input-bordered w-full" placeholder="Enter amount" />
+              <input id="str-amount" type="text" class="input input-bordered w-full input-primary" placeholder="Enter amount" />
             <label class="label text-white">PIN</label>
-              <input id="pin" type="password" class="input input-bordered w-full" maxlength="4" placeholder="4-digit PIN" />
+              <input id="pin" type="password" class="input input-bordered w-full input-secondary" maxlength="4" placeholder="4-digit PIN" />
             <button id="add-money-btn" class="btn btn-success w-full">Add Money</button>
           </fieldset>
         </div>
@@ -52,15 +53,43 @@
           <h2 class="text-2xl font-bold text-center text-white">Cash Out</h2>
           <fieldset class="space-y-3">
             <label class="label text-white">Amount (৳)</label>
-              <input id="str-amount-2" type="text" class="input input-bordered w-full" placeholder="Enter amount" />
+              <input id="str-amount-2" type="text" class="input input-bordered input-primary w-full" placeholder="Enter amount" />
             <label class="label text-white">PIN</label>
-              <input id="pin-2" type="password" class="input input-bordered w-full" maxlength="4" placeholder="4-digit PIN" />
+              <input id="pin-2" type="password" class="input input-bordered w-full input-secondary" maxlength="4" placeholder="4-digit PIN" />
             <button id="cash-out-btn-2" class="btn btn-success w-full">Cash Out</button>
           </fieldset>
         </div>
       </div>
     </div>
     <!-- cash out form ends  -->
+
+    <!-- operator selectors starts -->
+      <div id="operator-section" class="grid grid-cols-2 gap-4 max-w-md mx-auto hidden">
+        <div class="card bg-blue-500 text-white cursor-pointer" data-operator="gp">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">Grameenphone</h2>
+          </div>
+        </div>
+        <div class="card bg-red-500 text-white cursor-pointer" data-operator="robi">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">Robi</h2>
+          </div>
+        </div>
+        <div class="card bg-yellow-400 text-black cursor-pointer" data-operator="bl">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">Banglalink</h2>
+          </div>
+        </div>
+        <div class="card bg-green-600 text-white cursor-pointer" data-operator="teletalk">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">Teletalk</h2>
+          </div>
+        </div>
+      </div>
+    <!-- orerator selectors ends -->
+
+
+
 
   </main>
 

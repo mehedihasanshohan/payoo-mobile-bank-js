@@ -2,6 +2,7 @@ const addMoneyBtn = document.getElementById('add-money-btn-1');
 const addMoneyForm = document.getElementById('add-money-form');
 const cashOutBtn = document.getElementById('cash-out-btn');
 const cashOutForm = document.getElementById('cash-out-form');
+const operatorSection = document.getElementById('operator-section');
 
 const initialBalanceElement = document.getElementById('initial-balance');
 
@@ -42,7 +43,7 @@ document.getElementById('cash-out-btn-2').addEventListener('click', function () 
   const cashOutInput = document.getElementById('str-amount-2');
   const cashOutValue = parseFloat(cashOutInput.value);
 
-  const pinInput = document.getElementById('pin-2'); 
+  const pinInput = document.getElementById('pin-2');
   const pin = pinInput.value;
 
   let currentBalance = parseFloat(initialBalanceElement.innerText);
@@ -57,3 +58,9 @@ document.getElementById('cash-out-btn-2').addEventListener('click', function () 
   pinInput.value = '';
   cashOutInput.value = '';
 });
+
+
+// reacharge button
+document.getElementById('recharge-btn').addEventListener('click', function(){
+  operatorSection.classList.remove('hidden');
+})
