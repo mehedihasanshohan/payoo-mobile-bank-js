@@ -12,12 +12,14 @@ const utilityForm = document.getElementById('utility-form-section');
 const billIdInput = document.getElementById('mobile-number');
 const amountInput = document.getElementById('recharge-amount');
 const pinInput = document.getElementById('recharge-pin');
-const initialBalanceElement = document.getElementById('initial-balance');
 const billIdEl = document.getElementById('bill-id');
 const billAmountEl = document.getElementById('bill-amount');
 const billPinEl = document.getElementById('bill-pin');
 const billConfirmBtnEl = document.getElementById('bill-confirm-btn');
 const billSuccessMsg = document.getElementById('bill-success-msg');
+const initialBalanceElement = document.getElementById('initial-balance');
+const initialBalance = parseFloat(initialBalanceElement.innerText);
+const billAmount = parseFloat(billAmountEl.value);
 
 // hide all section
 function hideAllSections() {
@@ -194,14 +196,14 @@ confirmBtn.addEventListener('click', function () {
   billConfirmBtnEl.addEventListener('click', () => {
 
     const billId = billIdEl.value;
-    const amount = parseFloat(billAmountEl.value);
+    const billAmount = parseFloat(billAmountEl.value);
     const pin = billPinEl.value;
 
     if (billId === '') {
       alert("❌ Bill ID is required.");
       return;
     }
-    if (isNaN(amount) || amount <= 0) {
+    if (isNaN(billAmount) || billAmount <= 0) {
       alert("❌ Please enter a valid amount.");
       return;
     }
@@ -211,13 +213,38 @@ confirmBtn.addEventListener('click', function () {
     }
 
 
+    // if (pin === '1234') {
+    //   billIdInput.value = '';
+    //   amountInput.value = '';
+    //   pinInput.value = '';
+    //   utilityForm.classList.add('hidden');
+    //   billSuccessMsg.classList.remove('hidden');
+    //   initialBalance.innerText = initialBalance - billAmount;
+    // } else {
+    //   alert("❌ Wrong PIN. Please try again.");
+    // }
+
+
+    // inside payment success block:
     if (pin === '1234') {
-      billIdInput.value = '';
-      amountInput.value = '';
-      pinInput.value = '';
-      utilityForm.classList.add('hidden');
-      billSuccessMsg.classList.remove('hidden');
-    } else {
-      alert("❌ Wrong PIN. Please try again.");
+      if (initialBalance >= billAmount) {
+        const remainingBalance = initialBalance - billAmount;
+        initialBalanceElement.innerText = remainingBalance;
+
+        billIdInput.value = '';
+        amountInput.value = '';
+        pinInput.value = '';
+        utilityForm.classList.add('hidden');
+        billSuccessMsg.classList.remove('hidden');
+
+        setTimeout(() => {
+          billSuccessMsg.classList.add('hidden');
+        }, 3000);
+      } else {
+        alert("❌ Not enough balance!");
+        console.log(initialBalance, billAmount);
+
+      }
     }
+
   });
